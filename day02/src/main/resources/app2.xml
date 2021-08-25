@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- beans, c, p -->
+	
+	<!-- c를 이용 : MemberDTO ins1 = new MemberDTO("hong",20); -->
+	<bean name="ins1" class="kr.or.kosta.dto.MemberDTO" c:name="lee" c:age="40"></bean>
+	
+	<!-- p를 이용 : MemberDTO ins2 = new MemberDTO(); 
+			 		 ins2.setName("park");
+			 		 ins.setAge(10);                                -->
+	<bean name="ins2" class="kr.or.kosta.dto.MemberDTO" p:name="kim" p:age="50"></bean>
+
+</beans>

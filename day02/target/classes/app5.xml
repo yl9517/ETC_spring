@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- T1 ins = new T1(new Man()); 
+		 ins.act();  //입대
+	
+		T1 ins = new T1(new Student());
+		ins.act();   //kosta~~~
+		
+		Man m1 = new Man();
+		T1 ins3 = new T1(m1);
+		
+	 -->
+	
+	
+	<bean name="student" class="kr.or.kosta.Sample2.Student"></bean> <!-- student 객체 생성 -->
+	<bean name="man" class="kr.or.kosta.Sample2.Man"></bean>  <!-- man 객체 생성 -->
+	
+	<!-- [방법1] T1에 person을 상속받은 student 대입 -->
+	<bean name="ins" class="kr.or.kosta.Sample2.T1">
+		<constructor-arg name="p1" ref="student"></constructor-arg>
+	</bean>
+	
+	<!-- [방법2] c:를 이용하여  T1에 person을 상속받은 student 대입 -->
+	<bean name="ins2" class="kr.or.kosta.Sample2.T1" c:p1-ref="student"></bean>  
+	
+	
+	<!-- [방법3] T1에 생성자에 객체 생성하여 직접 대입 -->
+	<bean name="ins3" class="kr.or.kosta.Sample2.T1">
+		<constructor-arg name="p1">
+			<bean class="kr.or.kosta.Sample2.Man"></bean> <!-- man 객체 생성 -->
+		</constructor-arg>
+	</bean>
+	
+
+</beans>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="j1" class="kr.or.kosta.Sample1.Jumsu">
+		<property name="kor" value="100"></property>
+		<property name="eng" value="80"></property>
+		<property name="math" value="70"></property>
+	</bean>
+	
+	<!-- Jumsu j2 = new Jumsu(100,100,95); -->
+	<bean name="j2" class="kr.or.kosta.Sample1.Jumsu" c:kor="100" c:eng="100" c:math="95"></bean>
+
+
+	<!-- Member1 m1 = new Member1("hong",20,j2) -->
+	<bean name="m1" class="kr.or.kosta.Sample1.Member1">
+		<constructor-arg name="name" value="hong"></constructor-arg>
+		<constructor-arg name="age" value="10"></constructor-arg>
+		<constructor-arg name="jumsu" ref="j2"></constructor-arg> <!-- reference 참조변수로 j2를 넣음 -->
+	</bean>
+	
+	
+	<!-- Membe1 m2 = new Member1("han",24, new Jumsu(70,50,40)); -->
+	<bean name="m2" class="kr.or.kosta.Sample1.Member1">
+		<constructor-arg name="name" value="han"></constructor-arg>
+		<constructor-arg name="age" value="24"></constructor-arg>
+		<constructor-arg name="jumsu">
+			<bean class="kr.or.kosta.Sample1.Jumsu" c:kor="70" c:eng="50" c:math="40"></bean>
+		</constructor-arg>		
+	</bean>
+	
+	
+	<bean name="m3" class="kr.or.kosta.Sample1.Member1">
+		<constructor-arg name="items"> <!-- list생성자 -->
+			<list>
+				<value>item1</value> <!-- list.add("item1"); -->
+				<value>item2</value>
+				<value>item3</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- ArrayList -->
+
+</beans>

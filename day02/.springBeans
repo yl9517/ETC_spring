@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.13.202006180736-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/resources/app2.xml</config>
+		<config>src/main/resources/app3.xml</config>
+		<config>src/main/resources/app4.xml</config>
+		<config>src/main/resources/app5.xml</config>
+		<config>src/main/resources/app6.xml</config>
+		<config>src/main/resources/map1/app7.xml</config>
+		<config>src/main/resources/app8.xml</config>
+		<config>src/main/resources/hw.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

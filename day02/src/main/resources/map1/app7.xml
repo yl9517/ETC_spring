@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 
+	Item ins = new Item();
+	Map<String, Product> items = new HashMap<String,Product>();
+		items.put("a1",new Product());
+		
+		Product p = new Product();
+		p.setProduct_id(10);
+		p.setProduct_name("computer");
+		
+		items.put("a2",p);
+		ins.setItem(items);
+	
+ -->
+ 	
+ 	<bean name="p1" class="kr.or.kosta.Sample4.Product"></bean> <!-- product 객체 생성 -->
+ 	<bean name="p2" class="kr.or.kosta.Sample4.Product"></bean> <!-- product 객체 생성 -->
+ 
+	<bean name="item" class="kr.or.kosta.Sample4.Item"> 
+		<property name="items">
+			<map><!-- map 객체 -->
+				<entry>
+					<key><value>a1</value></key>
+					<ref bean="p1"/> <!-- 미리만든 객체 받아오기 -->
+				</entry>
+				
+				<entry key="a2" value-ref="p2"></entry> <!-- 미리만든 객체 받아오기 -->
+				
+				<entry>
+					<key><value>a3</value></key>
+					<bean class="kr.or.kosta.Sample4.Product"></bean><!-- 직접 객체 만들기 -->
+				</entry>
+				
+			</map> 
+		</property>
+	</bean>
+	</beans>

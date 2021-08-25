@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- MemberDTO ins = new MemberDTO("hong",20); -->
+	<bean name="ins" class="kr.or.kosta.dto.MemberDTO">
+		<constructor-arg name="name" value="hong"></constructor-arg>
+		<constructor-arg name="age" value="20"></constructor-arg>
+	</bean>
+	
+	<!-- 빈 생성자 생성 후  set으로 값 넣기 -->
+	<bean name="ins2" class="kr.or.kosta.dto.MemberDTO">
+		<property name="name" value="park"></property> <!--setName("park")-->
+		<property name="age" value="10"></property>
+	</bean>
+</beans>
