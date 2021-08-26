@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="ins" class="kr.or.kosta.sample0.BeanSet">
+		<constructor-arg name="items">
+			<set>
+				<value>hong</value>
+				<value>kim</value>
+				<value>lee</value>
+				<value>park</value>
+			</set>
+		</constructor-arg>
+	</bean>
+
+</beans>

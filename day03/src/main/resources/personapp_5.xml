@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<import resource="app0.xml "/> <!-- app0.xml에 선언되어있는 것 가져옴  -->
+	<bean name="p3" class="five.Person" c:name="lee" c:age="30"></bean>
+<!-- personList를 등록 -->
+	<bean name="persons" class="five.PersonList">
+		<property name="personlist">
+			<list>
+				<bean name="p1" class="five.Person" c:name="hong" c:age="10"></bean> <!-- list 안에서 만든 객체 (외부에서 바로 접근 못함) -->
+				<bean name="p2" class="five.Person" c:name="kim" c:age="20"></bean>
+				<ref bean="p3"/> <!--만들어져있는 bean 참조해서 넣기 (외부에서 바로접근 가능) -->
+			</list>
+		</property>
+	</bean>
+
+
+</beans>

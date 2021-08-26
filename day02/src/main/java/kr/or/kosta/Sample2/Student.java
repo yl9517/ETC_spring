@@ -4,8 +4,7 @@ public class Student implements Person {
 
 	@Override
 	public void act() {
-		System.out.println("kosta~~~");
-		
+		System.out.println("공부한다");
 	}
 
 }
