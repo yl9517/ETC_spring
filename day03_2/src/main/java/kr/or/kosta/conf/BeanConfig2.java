@@ -1,10 +1,14 @@
-package or.kr.kosta.conf;
+package kr.or.kosta.conf;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import kr.or.kosta.data.MemberList;
+import kr.or.kosta.dto.MemberDTO;
 
 @Configuration
 public class BeanConfig2 {
@@ -14,7 +18,12 @@ public class BeanConfig2 {
 	public MemberList getMemberList() {
 		MemberList list = new MemberList();
 		
-		list.prt();
+		List<MemberDTO> members = new ArrayList<MemberDTO>();
+		members.add(new MemberDTO("hong", 10));
+		members.add(new MemberDTO("kim", 10));
+		members.add(new MemberDTO("park", 30));
+		
+		list.setList(members);
 		
 		return list;
 	}

@@ -1,4 +1,4 @@
-package or.kr.kosta.conf;
+package kr.or.kosta.conf;
 
 
 import java.util.ArrayList;

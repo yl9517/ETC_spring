@@ -18,7 +18,7 @@ import lifecycle.Doing;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {BeanConf1.class}) //BeanConf1에 등록된 Bean 가져오기
+@ContextConfiguration(classes = {BeanConf1.class}) //BeanConf1 로딩
 public class ConfTest_3 { 
 	
 	@Resource  //@Resource : byName과 같음   

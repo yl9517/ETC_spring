@@ -1,4 +1,4 @@
-package or.kr.kosta.day03_2;
+package kr.or.kosta.day03_2;
 
 /**
  * Hello world!
