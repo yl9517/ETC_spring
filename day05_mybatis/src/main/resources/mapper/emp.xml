@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="kr.or.kosta.dao.empDAO">
+    	<select id="getEmpList" resultType="kr.or.kosta.dto.empDTO">
+    		select employee_id as empid ,  <!-- dto이름과 일치시켜야함 -->
+    			first_name as name,
+    			 salary as sal, 
+    			 department_id as dno
+    		from emp
+    	</select>
+    	
+    	<select id="getDataByNum" parameterType="int" resultType="kr.or.kosta.dto.empDTO">
+    		select employee_id as empid,
+    			 first_name as name,
+    			 salary as sal, 
+    			 department_id as dno
+    		from emp
+    		where employee_id = #{empid} <!-- from 다음 where 다음 select 이므로 별칭쓰면 안됨 -->
+    	</select>
+    	
+    	<select id="getListBydno" parameterType="int" resultType="kr.or.kosta.dto.empDTO">
+    		select employee_id as empid,
+    			 first_name as name,
+    			 salary as sal, 
+    			 department_id as dno
+    		from emp
+    		where department_id = #{dno}
+    	</select>
+    	
+    	<insert id="insertData" parameterType="kr.or.kosta.dto.empDTO">
+    		insert into emp 
+    		values(#{empid}, #{name}, #{sal}, #{dno} )
+    	</insert>
+    	
+    	<update id="updateData" parameterType="kr.or.kosta.dto.empDTO">
+    		update emp
+    		set first_name = #{name}
+    			, salary = #{sal}
+    			, department_id = #{dno}
+    		where employee_id=#{empid}
+    	</update>
+    	
+    </mapper>

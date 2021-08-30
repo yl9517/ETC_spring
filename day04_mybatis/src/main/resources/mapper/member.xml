@@ -9,6 +9,33 @@
    								resultType="kr.or.kosta.dto.MemberDTO">
    			select name, age from members where name=#{name}
    		</select>
-	
+   		
+		<select id="getMembers" resultType="kr.or.kosta.dto.MemberDTO">
+			select name, age from members
+		</select>
+		
+		<select id="memberAge" parameterType="int" resultType="kr.or.kosta.dto.MemberDTO">
+			select name, age from members where age=#{nai}
+		</select>
+		
+		<insert id="insertMember" parameterType="kr.or.kosta.dto.MemberDTO">
+			insert into members(name, age)  
+			values(#{name}, #{age})
+		</insert>
+		
+		<update id="updateMember" parameterType="int">
+			update members set age=#{age}
+		</update>
+		
+		<update id="updateMember2" parameterType="kr.or.kosta.dto.MemberDTO">
+			update members set age=#{age}
+			where name=#{name}
+		</update>
+		
+		<delete id="deleteMember" parameterType="string">
+			delete from members
+			where name=#{irum}
+		</delete>
+		
    </mapper>
    

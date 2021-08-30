@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DBCP방식 -->
+	<context:property-placeholder location="classpath:oracle.properties"/>
+	<bean name="dbconfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="${driverClassName}"></property>
+		<property name="jdbcUrl" value="${jdbcUrl}"></property>
+		<property name="username" value="${user}"></property>
+		<property name="password" value="${pwd}"></property>
+	</bean>
+	 <bean name="ds" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg name="configuration" ref="dbconfig"></constructor-arg>
+	</bean>
+
+
+	 <bean name="sqlsessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"></property>
+		<property name="mapperLocations" value="classpath:mapper/emp.xml"></property>
+	</bean>
+	
+	<bean name="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlsessionFactory"></constructor-arg>
+	</bean>
+	
+</beans>
