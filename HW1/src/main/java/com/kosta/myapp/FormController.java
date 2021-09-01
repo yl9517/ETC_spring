@@ -10,12 +10,12 @@ import com.kosta.dto.PersonDTO;
 @Controller
 public class FormController {
 	
-	@GetMapping("form")
+	@GetMapping("/form")
 	public String form() {	
 		return "form";
 	}
 	
-	@PostMapping("result")
+	@PostMapping("/result")
 	public String result(@ModelAttribute("member") PersonDTO dto) {
 		return "result";
 	}
