@@ -12,11 +12,14 @@
 		<c:forEach var="item" items="${list }">
 			<li>
 				<c:out value="${item.employee_id }" />
-				<c:out value="${item.first_name }" />
+			<a href="detail/${item.employee_id }">	<c:out value="${item.first_name }" /></a>
 				<c:out value="${item.salary }" />
 				<c:out value="${item.department_id }" />
 			</li>
 		</c:forEach>
 	</ul>
+	
+	<a href="insert">추가</a>
+	
 </body>
 </html>

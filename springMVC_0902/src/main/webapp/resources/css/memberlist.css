@@ -1,0 +1,10 @@
+table{
+	border-collapse: collapse;
+	width:750px;
+}
+td,th{
+	border : 1px solid silver
+}
+table thead tr{
+	background-color:yellow;
+}

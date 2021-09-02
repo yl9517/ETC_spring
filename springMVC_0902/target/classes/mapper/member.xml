@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.kosta.mapper.MemberMapper">
+  
+  
+  <!-- dto와 db이름이 다르므로 type을 map으로 만들어줘야함 -->
+  <!-- 컬럼 : db명 / 프로퍼티 : dto명 -->
+  <resultMap type="com.kosta.dto.MemberDTO" id="dto">
+  	<result column="member_no" property="member_no" />
+  	<result column="id" property="member_id" />
+  	<result column="name" property="member_name" />
+  	<result column="age" property="member_age" />
+  	<result column="addr" property="member_addr" />
+  </resultMap>
+  
+  <select id="getlist" resultMap="dto">
+  	select member_no, id, name, age, addr
+  	from member1
+  </select>
+  
+  </mapper>

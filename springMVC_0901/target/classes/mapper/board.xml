@@ -12,4 +12,28 @@
   	from emp
   </select>
   
+  <insert id="empinsert" parameterType="com.kosta.dto.EmpDTO">
+  	insert into emp( employee_id, first_name, salary, department_id )
+  	values(seq_emp.nextval, #{first_name} , ${salary}, ${department_id})
+  </insert>
+  
+  <select id="empDetail" parameterType="int" resultType="com.kosta.dto.EmpDTO">
+  	  	select employee_id
+  			, first_name
+  			, salary
+  			, department_id
+	  	from emp
+	  	where employee_id = #{employee_id}
+  </select>
+  
+  <delete id="empRemove" parameterType="int">
+  	delete from emp
+  	where employee_id = #{employee_id}
+  </delete>
+  
+  <update id="empModify" parameterType="com.kosta.dto.EmpDTO">
+  	update emp set first_name = #{first_name} , salary = #{salary} , department_id = #{department_id}
+  	where employee_id = #{employee_id}
+  </update>
+  
   </mapper>
