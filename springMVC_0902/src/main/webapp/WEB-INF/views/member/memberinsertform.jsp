@@ -1,33 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="memberinsertresult">
+<form method="get" action="memberinsertresult">
 	<ul>
 		<li>
-			<label for="member_id">¾ÆÀÌµğ</label>
+			<label for="member_id">ì•„ì´ë””</label>
 			<input type="text" name="member_id" id="member_id">
 		</li>
 		<li>
-			<label for="member_name">ÀÌ¸§</label>
+			<label for="member_name">ì´ë¦„</label>
 			<input type="text" name="member_name" id="member_name">
 		</li>
 		<li>
-			<label for="member_age">³ªÀÌ</label>
+			<label for="member_age">ë‚˜ì´</label>
 			<input type="text" name="member_age" id="member_age">
 		</li>
 		<li>
-			<label for="member_addr">ÁÖ¼Ò</label>
+			<label for="member_addr">ì£¼ì†Œ</label>
 			<input type="text" name="member_addr" id="member_addr">
 		</li>
 		<li>
-			<input type="submit" value="Ãß°¡">
-			<input type="reset" value="Ãë¼Ò">
+			<input type="submit" value="ì¶”ê°€">
+			<input type="reset" value="ì·¨ì†Œ">
 		</li>
 	</ul>
 </form>

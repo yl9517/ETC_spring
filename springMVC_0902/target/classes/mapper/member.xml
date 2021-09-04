@@ -16,8 +16,42 @@
   </resultMap>
   
   <select id="getlist" resultMap="dto">
-  	select member_no, id, name, age, addr
-  	from member1
+	  	select member_no, id, name, age, addr
+	  	from member1
   </select>
+  
+  <insert id="insertmember" parameterType="com.kosta.dto.MemberDTO">
+  	<selectKey keyProperty="member_no" resultType="int" order="AFTER"> <!-- after(insert 이후에) 넣은 키값을 바로 돌려줌 -->
+  		select member_no from member1
+  		where id = #{member_id}  
+  	</selectKey> 
+  
+  		insert into member1(member_no,id,name,age,addr)
+  		 values(member_seq.nextval
+  		 		, #{member_id}
+  		 		, #{member_name}
+  		 		, #{member_age}
+  		 		, #{member_addr}  )
+  </insert>
+  
+  <delete id="deletemember" parameterType="int">
+  		delete from member1
+  		where member_no = #{no}
+  </delete>
+  
+  <select id="memberdetail" resultMap="dto" parameterType="int">
+  		select member_no, id, name, age, addr
+	  	from member1
+	  	where member_no = #{no}
+  </select>
+  
+  <update id="memberModify" parameterType="com.kosta.dto.MemberDTO">
+  		update member1
+  		set  id = #{member_id}
+  			, name = #{member_name}
+  			, age = #{member_age}
+  			, addr = #{member_addr}
+  		where member_no = #{member_no}
+  </update>
   
   </mapper>

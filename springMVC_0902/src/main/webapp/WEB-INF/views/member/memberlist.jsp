@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath }/resources/css/memberlist.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/memberlist.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -19,6 +19,7 @@
 			<th>이름</th>
 			<th>나이</th>
 			<th>주소</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -35,11 +36,15 @@
 				<td>${item.member_name }</td>
 				<td>${item.member_age }</td>
 				<td>${item.member_addr }</td>
+				<td><input type="button" class="btndel" value="삭제">
+					<input type="button" class="btnmodify" value="수정">
+				</td>
+				
 			</tr>
 		</c:forEach>
 	</c:if>
 	</tbody>
 </table>
-<script src="${pageContext.servletContext.contextPath }/resources/js/memberlist.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/memberlist.js?var=2"></script>
 </body>
 </html>

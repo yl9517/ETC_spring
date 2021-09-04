@@ -21,4 +21,26 @@ public class MemberServiceImple implements MemberService {
 		return mapper.getlist();
 	}
 
+	@Override
+	public int insertmember(MemberDTO dto) {
+		return mapper.insertmember(dto);
+	}
+
+	@Override
+	public int memberdelete(int no) {
+		int result = mapper.deletemember(no);
+		return result;
+	}
+
+	@Override
+	public MemberDTO memberDetail(int no) {
+		
+		return mapper.memberdetail(no);
+	}
+
+	@Override
+	public int memberModify(MemberDTO dto) {
+		return mapper.memberModify(dto);
+	}
+
 }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.kosta.dto.MemberDTO;
 import com.kosta.mapper.MemberMapper;
 import com.kosta.service.MemberService;
 
@@ -40,12 +41,47 @@ public class empTest {
 	@Resource(name="memberservice") //주입
 	private MemberService service;
 	
+//	@Test
+//	public void test3() {
+//		assertNotNull(service);
+//		assertEquals(4, service.memberList().get(0).getMember_no());
+//	}
+	
+	//키값 insert 테스트
+//	@Test
+//	public void test4() {
+//		MemberDTO dto = new MemberDTO();
+//		dto.setMember_id("hello15");
+//		dto.setMember_name("이1아름");
+//		dto.setMember_age(132);
+//		dto.setMember_addr("서울");
+//		service.insertmember(dto);
+//		
+//		assertEquals(32,dto.getMember_no());
+//	}
+	
+	//delete 테스트
+//	@Test
+//	public void test5() {
+//		int result =service.memberdelete(36);
+//		assertEquals(1, result);
+//	}
+	
+	//detail 테스트
+//	@Test
+//	public void test6() {
+//		assertEquals(132, service.memberDetail(23).getMember_age());
+//	}
+	
+	//update 텟트ㅡ
 	@Test
-	public void test3() {
-		assertNotNull(service);
-		assertEquals(4, service.memberList().get(0).getMember_no());
+	public void test7() {
+		MemberDTO dto = service.memberDetail(32);
+		dto.setMember_id("myid");
+		dto.setMember_name("유르스윌리스");
+		dto.setMember_age(50);
+		dto.setMember_addr("제주");
+		service.memberModify(dto);
+		assertEquals(50, service.memberDetail(32).getMember_age());
 	}
-	
-	
-	
 }
