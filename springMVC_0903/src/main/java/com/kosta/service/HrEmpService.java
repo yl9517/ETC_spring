@@ -9,4 +9,6 @@ public interface HrEmpService {
  
 	public List<HrEmpDTO> list();
 	public List<HashMap<String, Object>> list2();
+	public void insertEmp(HashMap<String, Object> hm);
+	public HashMap<String, Object> detailEmp(int employee_id);
 }

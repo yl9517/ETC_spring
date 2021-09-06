@@ -17,15 +17,33 @@
   			, to_char(hire_date,'yyyy-mm-dd') as hiredate
   			, department_name
   		from hemp
+  		order by employee_id
   	</select>
   	
+<!-- hashMap의 key값으로 넣는 순간 본래 테이블명(대문자)로 들어가게 됨 -->
   	<select id="list2" resultType="java.util.HashMap">
   	  		select employee_id
   			, first_name
-  			, to_char(hire_date,'yyyy-mm-dd') as hiredate
+  			, to_char(hire_date,'yyyy-mm-dd')
   			, department_name
   		from hemp
   		order by employee_id
   	</select>
+  
+  	<insert id="insertEmp" parameterType="java.util.HashMap">
+  		insert into hemp(employee_id, first_name, hire_date, department_name)
+  		values(hemp_seq.nextval, #{fname}, sysdate ,#{dname})
+  	</insert>
+  	
+  	<select id="detailEmp" parameterType="int" resultType="java.util.HashMap">
+  			select employee_id
+  			, first_name
+  			, to_char(hire_date,'yyyy-mm-dd') as hire_date
+  			, department_name
+  		from hemp
+  		where employee_id = #{id}
+  		order by employee_id
+  	</select>
+  	
   
   </mapper> 

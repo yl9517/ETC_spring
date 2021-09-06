@@ -11,4 +11,6 @@ import com.kosta.dto.HrEmpDTO;
 public interface HrEmpMapper {
 	public List<HrEmpDTO> list();
 	public List<HashMap<String, Object>> list2();
+	public void insertEmp(HashMap<String, Object> hm);
+	public HashMap<String, Object> detailEmp(int id);
 }

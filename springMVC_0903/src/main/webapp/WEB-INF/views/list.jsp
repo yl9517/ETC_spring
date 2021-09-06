@@ -15,7 +15,9 @@
  	<c:out value="${item.hdate }"></c:out>
  	<c:out value="${item.dname }"></c:out>
  	<br>
+ 	
  </c:forEach>
+ 	<a href="insertform">추가</a>
 
 </body>
 </html>

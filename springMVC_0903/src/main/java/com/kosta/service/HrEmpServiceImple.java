@@ -17,7 +17,6 @@ public class HrEmpServiceImple implements HrEmpService {
 	
 	@Override
 	public List<HrEmpDTO> list() {
-		// TODO Auto-generated method stub
 		return mapper.list();
 	}
 
@@ -25,6 +24,17 @@ public class HrEmpServiceImple implements HrEmpService {
 	public List<HashMap<String, Object>> list2() {
 		// TODO Auto-generated method stub
 		return mapper.list2();
+	}
+
+	@Override
+	public void insertEmp(HashMap<String, Object> hm) {
+		mapper.insertEmp(hm);
+	}
+
+	@Override
+	public HashMap<String, Object> detailEmp(int id) {
+		return mapper.detailEmp(id);
+		
 	}
 
 }

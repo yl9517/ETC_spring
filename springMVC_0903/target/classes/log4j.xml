@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<!--
 
+	 [log4j.xml] = 로그 기능을 제공하는 오픈 소스 라이브러리
+	appender : 로그 출력을 어디에 할 것인지
+		-ConsoleApperender : 콘솔에 로그를 출력하도록
+		-FileAppender : 파일에 로그를 저장하도록
+	
+	layout : 어떤 형식으로 출력 할 것인지
+	
+	logger : 로깅 메세지를 Appender에 전달
+	level : 로그 레벨에 따라 출력을 결정
+		-FATAL  -ERROR  -WARN  -INFO  -TRACE
+
+
+-->
 	<!-- Appenders -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
