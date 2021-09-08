@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.kosta.mapper.BoardMapper">
+  
+  <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
+  
+  <!-- parameterType 일일히 써주지 않고 map으로 만들기  -->
+  	<select id="totalCount" parameterMap="hashmap" resultType="int">
+  		select count(*)
+  		from employees
+  		<!-- mybatis 동적쿼리 -->
+  		<where>
+  			<if test="searchtxt != null and searchtxt != '' and !searchtxt.equals('')"> <!-- searchtxt가 널이 아닐때 -->
+  				<choose>
+  					<when test="search=='employee_id'">
+  						and employee_id = #{searchtxt}
+  					</when>
+  					<when test="search=='first_name'">
+  						and upper(first_name) like '%'||upper(#{searchtxt})||'%'
+  					</when>
+  					<when test="search=='department_id'">
+  						and department_id=#{searchtxt}
+  					</when>
+  				</choose>
+  			</if>
+  		</where>
+  	</select>
+  	
+  	<select id="list" parameterMap="hashmap" resultType="com.kosta.dto.EmpDTO">
+  		select *
+  		from (
+  				select rownum as rnum, e.*
+  				from (
+  						select employee_id
+  							  , first_name
+  							  , department_id
+  					 	from employees
+  					 	<where>
+  					 		<if test="searchtxt !=null and searchtxt!=''">
+  					 			<choose>
+  					 				<when test="search=='employee_id'">
+  					 				<!-- 앞에 where자료가 없으면 mybatis에서 알아서 and를 뺌 -->
+  					 					and employee_id = #{searchtxt}
+  					 				</when>
+  					 				<when test="search=='first_name'">
+  					 					and upper(first_name) like '%'|| upper(#{searchtxt}) ||'%'
+  					 				</when>
+  					 				<when test="search=='department_id'">
+  					 					and department_id = #{searchtxt}
+  					 				</when>
+  					 			</choose>
+  					 		</if>	 	
+  					 	</where> <!-- CDATA는 문자열로 인식하게 해주기 위해 사용 -->
+  					 	<![CDATA[ 
+  					 		order by employee_id
+  					 	]]>
+  					)e 	
+  					<where>   <!-- 뒷번호를 먼저 잘라주기  -->	
+  					<![CDATA[
+  					    rownum<= #{endrow}	
+  					 ]]>		
+  					</where>		
+  		)
+  		<where>
+	  		<![CDATA[
+	  		    rnum>= #{startrow}
+  		    ]]>
+  		</where>
+  	
+  	</select>
+  	
+  </mapper> 

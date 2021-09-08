@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.kosta.mapper.EmpMapper">
+  
+  <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
+  
+	<select id="getMembers" resultType="com.kosta.dto.MemberDTO">
+		select employee_id
+			  , first_name
+			  , to_char(hire_date, 'yyyy-mm-dd') as hire_date
+			  , salary
+			  , department_id
+		from emp2	
+	</select>
+	
+	<select id="getMember" resultType="com.kosta.dto.MemberDTO" parameterType="int">
+		select employee_id
+			  , first_name
+			  , to_char(hire_date, 'yyyy-mm-dd') as hire_date
+			  , salary
+			  , department_id
+		from emp2	
+		where employee_id = #{id}
+	</select>
+  	
+  	<insert id="insertMember" parameterType="com.kosta.dto.MemberDTO">
+  		insert into emp2
+  		values(	emp02_seq.nextval
+  				, #{first_name}
+  				, #{hire_date}
+  				, #{salary}
+  				, #{department_id} )
+  	</insert>
+  	
+  	<update id="modifyMember" parameterType="com.kosta.dto.MemberDTO">
+  		update emp2 
+  	 	set
+  	 		first_name = #{first_name} 
+  	 		,hire_date = #{hire_date}	 		
+  	 		,salary = #{salary} 	 		
+  	 		,department_id = #{department_id}
+		where employee_id = #{employee_id}
+  	</update>
+  	
+  	<delete id="deleteMember" parameterType="int">
+  		delete from emp2
+  		where employee_id = #{id}
+  	</delete>
+  	
+  </mapper> 
