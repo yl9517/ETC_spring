@@ -53,7 +53,8 @@ public class MemberController {
 	}
 	
 	@GetMapping("/member/{id}")
-	public @ResponseBody MemberDTO getMember(@PathVariable int id) {
+	@ResponseBody
+	public MemberDTO getMember(@PathVariable int id) {
 		MemberDTO dto = service.getMember(id);
 		
 		return dto;

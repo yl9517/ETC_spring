@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- 	<bean name="t1" class="com.kosta.target.Target1"></bean>
+	<bean name="t2" class="com.kosta.target.Target2"></bean>
+	<bean name="advice1" class="com.kosta.aspect1.Advice1"></bean>
+	
+	<aop:config>
+		<aop:aspect id="aspect1" ref="advice1">
+			<aop:pointcut expression="execution(* com.kosta.target.*.*(..))" id="point1"/> pointcut
+			<aop:before method="b" pointcut-ref="point1"/> advice : method명 맞춰줘야함
+		</aop:aspect>
+	</aop:config> -->
+	
+	<context:component-scan base-package="com.kosta.service"></context:component-scan> <!-- service 받기 -->
+	<bean name="advice1" class="com.kosta.aspect1.Advice1"></bean>
+	
+<!-- 	<aop:config>  aop 설정정보
+		<aop:aspect id="aspect2" ref="advice1"> aspect 설정
+			<aop:pointcut expression="execution(* com.kosta.service.*.*(..))" id="point1"/> pointcut 설정
+			<aop:before method="before" pointcut-ref="point1"/> beforeAdvice 설정
+		</aop:aspect>
+	</aop:config> -->
+	
+	
+<!-- 	<aop:config>  aop 설정정보
+		<aop:aspect id="aspect3" ref="advice1"> aspect 설정
+			<aop:pointcut expression="execution(* com.kosta.service.*.*(..))" id="point2"/> pointcut 설정
+			<aop:after method="after" pointcut-ref="point2"/> 
+		</aop:aspect>
+	</aop:config> -->
+	
+	
+<!-- 	<aop:config>  
+		<aop:aspect id="aspect4" ref="advice1"> 
+			<aop:pointcut expression="execution(* com.kosta.service.Service1.*(..))" id="point3"/> 
+			<aop:after-returning method="after2" pointcut-ref="point3" returning="o"/> 
+			<aop:after-throwing method="after1" pointcut-ref="point3" throwing="ex"/>
+		</aop:aspect>
+	</aop:config> -->
+	
+	<bean id="advice2" class="com.kosta.aspect1.Advice2"></bean>
+	
+	<aop:config>
+		<aop:aspect id="aspect5" ref="advice2">
+			<aop:pointcut expression="execution(* com.kosta.service.Service3.*(..))" id="point5"/>
+			<aop:around method="around" pointcut-ref="point5"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
