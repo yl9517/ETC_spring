@@ -4,6 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.kosta.mapper.EmpMapper">
   
-
+	<select id="list" resultType="com.kosta.dto.EmpDTO">
+		select empno,ename,sal
+		from kostaemp
+	</select>
   
+  	<insert id="insertdata" parameterType="com.kosta.dto.EmpDTO">
+  		insert into kostaemp( empno, ename, sal )
+  		values (#{empno}, #{ename} , #{sal} )
+  	</insert>
+  	<update id="updatedata" parameterType="com.kosta.dto.EmpDTO">
+  		update kostaemp
+  		set ename = #{ename}
+  			, sal = #{sal}
+  		where empno = #{empno}
+  	</update>
+  	<delete id="deletedata" parameterType="int">
+  		delete from kostaemp
+  		where empno = #{empno}
+  	</delete>
+  	
+  	<select id="detaildata" parameterType="int" resultType="com.kosta.dto.EmpDTO">
+  		select empno,ename,sal
+		from kostaemp
+		where empno = #{empno}
+  	</select>
   </mapper> 

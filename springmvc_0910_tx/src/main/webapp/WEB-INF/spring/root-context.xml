@@ -2,10 +2,44 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
 	<context:component-scan base-package="com.kosta.config"></context:component-scan>	
 		
+	<!-- DB연결  xml -->	
+<!-- 	 <context:property-placeholder location="classpath:oracle.properties"/>
+	<bean name="dbconf" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="jdbcUrl" value="${url}"></property>
+		<property name="username" value="${user}"></property>
+		<property name="password" value="${pwd}"></property>
+	</bean>
+	
+	<bean name="ds" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg name="configuration" ref="dbconf"> </constructor-arg>
+	</bean>
+	
+	<bean name="sqlsessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"></property>
+		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+	</bean>
+	
+	
+	<mybatis-spring:scan base-package="com.kosta.mapper"/>
+	<context:component-scan base-package="com.kosta.service"></context:component-scan>
+	
+	트랜잭션 :      DBConfig의 트랜잭션 코드를 XML로 작성하기
+	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<tx:annotation-driven/>
+	 -->
+	
+	
 </beans>
